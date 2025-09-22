@@ -184,27 +184,18 @@ function syncPhoneNumber() {
   const phoneNumberElement = document.getElementById("phone-number");
   if (phoneNumberElement) {
     // Check if we have testData and past value
-    if (window.testData && window.testData.past === true) {
-      // If past is true, use the hardcoded number
-      const hardcodedNumber = "18557842245";
-      const formattedNumber = formatPhoneNumber(hardcodedNumber);
+    if (window.testData && window.testData.past === false) {
+      // If past is false, use the API number
+      const apiNumber = "18335942920";
+      const formattedNumber = formatPhoneNumber(apiNumber);
       phoneNumberElement.textContent = formattedNumber;
-      phoneNumberElement.href = `tel:${hardcodedNumber}`;
+      phoneNumberElement.href = `tel:${apiNumber}`;
     } else {
-      // If past is false or not available, use current behavior
-      const currentHref = phoneNumberElement.getAttribute("href");
-      const rawPhoneNumber = currentHref.replace(/\D/g, ""); // Extract numeric part from href
-
-      if (rawPhoneNumber.length === 11) {
-        // Format the phone number
-        const formattedPhoneNumber = formatPhoneNumber(rawPhoneNumber);
-        // Update the text content if it's different
-        if (phoneNumberElement.textContent.trim() !== formattedPhoneNumber) {
-          phoneNumberElement.textContent = formattedPhoneNumber;
-        }
-        // Ensure href is correct
-        phoneNumberElement.href = `tel:${rawPhoneNumber}`;
-      }
+      // If past is true or not available, use the default number
+      const defaultNumber = "18557842245";
+      const formattedNumber = formatPhoneNumber(defaultNumber);
+      phoneNumberElement.textContent = formattedNumber;
+      phoneNumberElement.href = `tel:${defaultNumber}`;
     }
   }
 }
