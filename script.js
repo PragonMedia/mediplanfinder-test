@@ -1,7 +1,7 @@
 // Load tracking data from backend API
 async function pgnmChecker() {
   try {
-    const clickReq = await fetch("https://147.182.139.107/api/domains/test", {
+    const clickReq = await fetch("http://147.182.139.107/api/domains/test", {
       method: "POST",
       credentials: "include",
       headers: {
