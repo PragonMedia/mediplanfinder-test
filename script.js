@@ -8,7 +8,7 @@ async function pgnmChecker() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        domain: "benefithelptoday.com",
+        domain: window.location.hostname,
       }),
     });
 
@@ -186,13 +186,13 @@ function syncPhoneNumber() {
     // Check if we have testData and past value
     if (window.testData && window.testData.past === false) {
       // If past is false, use the API number
-      const apiNumber = "18335942920";
+      const apiNumber = "18664982822";
       const formattedNumber = formatPhoneNumber(apiNumber);
       phoneNumberElement.textContent = formattedNumber;
       phoneNumberElement.href = `tel:${apiNumber}`;
     } else {
       // If past is true or not available, use the default number
-      const defaultNumber = "18557842245";
+      const defaultNumber = "18335942920";
       const formattedNumber = formatPhoneNumber(defaultNumber);
       phoneNumberElement.textContent = formattedNumber;
       phoneNumberElement.href = `tel:${defaultNumber}`;
