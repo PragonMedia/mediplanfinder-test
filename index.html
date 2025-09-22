@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Medicare</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <a href="" style="display: none" id="rtRef"></a>
+    <input id="hdnApprovalStatus" type="hidden" />
+    <!-- container  -->
+    <section class="w-full mx-auto flex-grow">
+      <!-- Logo and Domain Header -->
+      <div class="w-full px-4 py-4 border-b border-gray-200 bg-[#d1d5dc]">
+        <div class="flex items-center justify-center space-x-3">
+          <div class="flex items-center justify-center space-x-3">
+            <div
+              class="w-12 h-12 bg-gray-300 rounded-lg flex items-center justify-center"
+            >
+              <img src="./assets/logo.png" alt="" class="w-full h-full" />
+            </div>
+            <span class="text-black font-semibold text-lg" id="domain-name"
+              >BENEFITHELPJOURNAL.COM</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="headerContent w-full mx-0 px-0 flex flex-col items-center justify-center space-y-4 pt-8 text-center border-b border-4-black"
+      >
+        <h1 class="text-2xl font-bold md:text-4xl md:w-[70%] px-2 pb-6">
+          Americans on Medicare May Be Eligible For a Grocery Allowance!
+        </h1>
+      </div>
+      <div class="text-center first-question px-4">
+        <p class="pt-4 text-2xl">Answer the question below to get started!</p>
+        <p class="pt-4 font-bold text-2xl text-black">What is your age?</p>
+        <div class="" id="questions"></div>
+        <ul class="flex flex-col space-y-6 max-w-3xl mx-auto pt-6 md:px-24">
+          <li
+            value="below 65"
+            class="btnFirstQuestions bg-[#ff3131] py-6 rounded-xl w-full text-center font-bold text-white text-lg transform hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer hover:bg-[#ff0000]"
+          >
+            UNDER 65
+          </li>
+          <li
+            value="65 - 70"
+            class="btnFirstQuestions bg-[#ff3131] py-6 rounded-xl w-full text-center font-bold text-white text-lg transform hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer hover:bg-[#ff0000]"
+          >
+            65 TO 70
+          </li>
+          <li
+            value="71 - 75"
+            class="btnFirstQuestions bg-[#ff3131] py-6 rounded-xl w-full text-center font-bold text-white text-lg transform hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer hover:bg-[#ff0000]"
+          >
+            71 TO 75
+          </li>
+          <li
+            value="76 and older"
+            class="btnFirstQuestions bg-[#ff3131] py-6 rounded-xl w-full text-center font-bold text-white text-lg transform hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer hover:bg-[#ff0000]"
+          >
+            OVER 75
+          </li>
+        </ul>
+      </div>
+      <div class="text-center second-question hidden px-4">
+        <div class="w-[50%] mx-auto">
+          <div class="flex justify-between mb-1">
+            <span class="pt-12 text-2xl">66% Complete</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div
+              class="bg-blue-600 h-2.5 rounded-full"
+              style="width: 45%"
+            ></div>
+          </div>
+        </div>
+        <p class="pt-4 font-bold text-2xl">Are You On Medicare parts A & B?</p>
+        <ul class="flex flex-col space-y-6 max-w-3xl mx-auto pt-6 md:px-24">
+          <li
+            value="yes"
+            class="btnsecondQuestions bg-[#ff3131] py-6 rounded-xl w-full text-center font-bold text-white text-lg transform hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer hover:bg-[#ff0000]"
+          >
+            YES
+          </li>
+          <li
+            value="no"
+            class="btnsecondQuestions bg-[#ff3131] py-6 rounded-xl w-full text-center font-bold text-white text-lg transform hover:-translate-y-1 hover:shadow-xl transition duration-300 cursor-pointer hover:bg-[#ff0000]"
+          >
+            NO
+          </li>
+        </ul>
+      </div>
+      <div
+        class="text-center third-question max-w-3xl mx-auto mt-12 px-4 hidden"
+      >
+        <div class="w-[50%] mx-auto pb-8">
+          <div class="flex justify-between mb-1">
+            <span class="pt-4 text-2xl">100% Complete</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div
+              class="bg-blue-600 h-2.5 rounded-full"
+              style="width: 100%"
+            ></div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col text-center py-4 px-4 pb-4 border border-blue-400 shadow-xl pb-6 rounded-xl"
+        >
+          <p class="pt-4 font-bold text-2xl">
+            <span class="pt-4 font-bold text-xl text-[#65a30d]"
+              >Great News, You May Be Eligible!</span
+            >
+            Speak with a licensed insurance agent to find out if you qualify.
+          </p>
+
+          <a
+            href="tel:+18664982822"
+            id="phone-number"
+            class="call_number bg-[#ff3131] py-4 block px-4 mt-6 text-center font-bold text-white text-lg w-[80%] mx-auto text-md transform hover:-translate-y-1 hover:shadow-xl transition duration-300 md:text-3xl hover:bg-[#cc0000]"
+          >
+            +1 (866) 4982822
+          </a>
+          <p class="pt-4 text-md w-[80%] mx-auto text-[#0072C0] font-bold">
+            Last chance to get your spot, Call Now!
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer class="my-24 mb-4 border-t border-4-black">
+      <div
+        class="flex flex-col items-center justify-center space-y-6 text-center pt-4"
+      >
+        <!-- Disclaimer -->
+        <div class="max-w-4xl mx-auto px-4 py-6 bg-gray-50 rounded-lg">
+          <p class="text-xs text-gray-600 leading-relaxed">
+            The offers mentioned or displayed on our site come from third-party
+            advertisers who compensate us. We are a marketing company, and this
+            website is part of our marketing activities for third-party
+            businesses. This compensation may influence how products are
+            presented on our website, including their placement and order.
+            Additionally, it may affect the topics, posts, and content featured
+            on our site. We do not cover all services or products available in
+            the market. The editorial opinions shared here are solely our own
+            and are not influenced, approved, or provided by advertisers. Other
+            than as disclosed, we are not affiliated with any third-party
+            advertisers. Therefore, we do not endorse or recommend any specific
+            product or service featured on this website. If you are redirected
+            to a third-party site, please review their terms, conditions, and
+            privacy policies, as they may differ significantly from ours.
+          </p>
+        </div>
+
+        <div class="flex flex-row space-x-12 items-center text-xs font-light">
+          <a href="/privacy/" class="link" id="privacyLink">Privacy Policy</a>
+          <p>|</p>
+          <a href="/terms/" class="link" id="termsLink">Terms and Conditions</a>
+        </div>
+        <p class="text-xs font-light">Copyright © 2025 - All right reserved</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
