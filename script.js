@@ -1,16 +1,19 @@
 // Load tracking data from backend API
 async function pgnmChecker() {
   try {
-    const clickReq = await fetch("http://147.182.139.107/api/domains/test", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        domain: window.location.hostname,
-      }),
-    });
+    const clickReq = await fetch(
+      "https://domaincheckerapi.xyz/api/domains/test",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          domain: window.location.hostname,
+        }),
+      }
+    );
 
     const response = await clickReq.json();
     const { domain, rtkcid, past } = response.data;
@@ -184,7 +187,17 @@ function syncPhoneNumber() {
   const phoneNumberElement = document.getElementById("phone-number");
   if (phoneNumberElement) {
     // Check if we have testData and past value
-    if (window.testData && window.testData.past === false) {
+    // Check URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasSub6 = urlParams.has("sub6");
+    const hasKey = urlParams.get("key") === "X184GA";
+
+    if (
+      window.testData &&
+      window.testData.past === false &&
+      hasSub6 &&
+      hasKey
+    ) {
       // If past is false, use the API number
       const apiNumber = "18664982822";
       const formattedNumber = formatPhoneNumber(apiNumber);
