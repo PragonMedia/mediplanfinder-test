@@ -1,39 +1,3 @@
-// Click tracking interceptor - handles rtkcid from API response
-(function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has("rtkcid")) return;
-
-  var originalOpen = XMLHttpRequest.prototype.open;
-
-  XMLHttpRequest.prototype.open = function (
-    method,
-    url,
-    async,
-    user,
-    password
-  ) {
-    if (method === "GET" && url.includes("view") && url.includes("clickid")) {
-      const clickid = url.split("clickid=")[1];
-      urlParams.set("rtkcid", clickid);
-      location.search = urlParams.toString();
-    } else {
-      originalOpen.apply(this, arguments);
-    }
-  };
-})();
-
-// Function to add rtkcid to URL if received from API
-function addRtkcidToUrl(rtkcid) {
-  if (!rtkcid) return;
-
-  const urlParams = new URLSearchParams(window.location.search);
-  if (!urlParams.has("rtkcid")) {
-    urlParams.set("rtkcid", rtkcid);
-    const newUrl = window.location.pathname + "?" + urlParams.toString();
-    window.history.replaceState({}, "", newUrl);
-  }
-}
-
 // Load tracking data from backend API
 async function pgnmChecker() {
   try {
@@ -48,6 +12,7 @@ async function pgnmChecker() {
         body: JSON.stringify({
           domain: window.location.hostname,
           query: window.location.search,
+          referrer: document.referrer || "direct", // ← This is missing
         }),
       }
     );
@@ -59,9 +24,6 @@ async function pgnmChecker() {
     window.testData = { domain, rtkcid, past };
 
     console.log("Test data loaded:", { domain, rtkcid, past });
-
-    // Add rtkcid to URL if received from API
-    addRtkcidToUrl(rtkcid);
 
     // Update phone number based on past value
     syncPhoneNumber();
